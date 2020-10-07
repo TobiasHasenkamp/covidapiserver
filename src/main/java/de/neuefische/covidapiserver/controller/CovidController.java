@@ -27,8 +27,8 @@ public class CovidController {
     public List<CovidApiNewInfections> getCovidCasesGermany() {
         List<CovidApiNewInfections> germanInfectiony = new ArrayList<>();
         Collections.addAll(germanInfectiony, covidApiService.getCovidApiNewInfections());
-        return germanInfectiony;
-
+        //return germanInfectiony; //this has changed
+        return covidService.GetLastSevenDays(); //this is new
     }
 
 }

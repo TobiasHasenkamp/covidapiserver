@@ -12,7 +12,7 @@ public class CovidApiNewInfections {
 
     @JsonProperty("Date")
     private String date;
-    @JsonProperty("Cases")
+    @JsonProperty("Confirmed")
     private int cases;
 
 }

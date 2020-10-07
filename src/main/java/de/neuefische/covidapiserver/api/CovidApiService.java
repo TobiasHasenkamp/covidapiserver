@@ -21,7 +21,6 @@ public class CovidApiService {
         return response;
     }
 
-
     /*
     private final RestTemplate restTemplate = new RestTemplate();
 
