@@ -5,9 +5,7 @@ import de.neuefische.covidapiserver.model.CovidApiNewInfections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -20,14 +18,12 @@ public class CovidService {
         this.covidApiService = covidApiService;
     }
 
-    public List<CovidApiNewInfections> GetLastSevenDays(){
+    public List<CovidApiNewInfections> getLastSevenDays(){
 
-        int i = covidApiService.getCovidApiNewInfections().length -1;
-        CovidApiNewInfections[] oldList = covidApiService.getCovidApiNewInfections();
+        CovidApiNewInfections[] covidApiNewInfections = covidApiService.getCovidApiNewInfections();
         List<CovidApiNewInfections> filteredList = new ArrayList<CovidApiNewInfections>();
-
-        filteredList.add(oldList[i]);
-        filteredList.add(oldList[i-6]);
+        filteredList.add(covidApiNewInfections[covidApiNewInfections.length -1]);
+        filteredList.add(covidApiNewInfections[covidApiNewInfections.length -7]);
 
         return filteredList;
     }
@@ -38,11 +34,10 @@ public class CovidService {
 
     public int getAverageCasesInLast7Days(){
 
-        int difference;
-        int average;
+        List<CovidApiNewInfections> lastSevenDays = getLastSevenDays();
 
-        difference = GetLastSevenDays().get(0).getCases() - GetLastSevenDays().get(1).getCases();
-        average = difference / 7;
+        int difference = lastSevenDays.get(0).getCases() - lastSevenDays.get(1).getCases();
+        int average = difference / 7;
 
         return average;
     }
