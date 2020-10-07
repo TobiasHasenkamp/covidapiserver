@@ -21,13 +21,5 @@ public class CovidApiService {
         return response;
     }
 
-    /*
-    private final RestTemplate restTemplate = new RestTemplate();
-
-    public CovidApiCountryPerDay[] getCovidApiCountryPerDays() {
-        ResponseEntity<CovidApiCountryPerDay[]> response = restTemplate.getForEntity(apiUrl, CovidApiCountryPerDay[].class);
-        return response.getBody();
-    }
-     */
 
 }
