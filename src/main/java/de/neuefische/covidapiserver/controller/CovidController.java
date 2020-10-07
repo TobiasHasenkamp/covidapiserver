@@ -24,11 +24,17 @@ public class CovidController {
     }
 
     @GetMapping("/covidApi")
-    public List<CovidApiNewInfections> getCovidCasesGermany() {
-        List<CovidApiNewInfections> germanInfectiony = new ArrayList<>();
-        Collections.addAll(germanInfectiony, covidApiService.getCovidApiNewInfections());
+    public List<CovidApiNewInfections> getCovidCasesLast7Days() {
+        //List<CovidApiNewInfections> germanInfectiony = new ArrayList<>();
+        //Collections.addAll(germanInfectiony, covidApiService.getCovidApiNewInfections());
         //return germanInfectiony; //this has changed
+
         return covidService.GetLastSevenDays(); //this is new
+    }
+
+    @GetMapping("/average")
+    public int getCovidCasesAverageLast7Days(){
+        return covidService.getAverageCasesInLast7Days();
     }
 
 }

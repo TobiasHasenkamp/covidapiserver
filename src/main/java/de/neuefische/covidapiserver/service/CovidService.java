@@ -22,22 +22,28 @@ public class CovidService {
 
     public List<CovidApiNewInfections> GetLastSevenDays(){
 
-        //This is new
         int i = covidApiService.getCovidApiNewInfections().length -1;
         CovidApiNewInfections[] oldList = covidApiService.getCovidApiNewInfections();
         List<CovidApiNewInfections> filteredList = new ArrayList<CovidApiNewInfections>();
 
-        while (i > oldList.length - 7){
-            filteredList.add(oldList[i]);
-            i--;
-        }
+        filteredList.add(oldList[i]);
+        filteredList.add(oldList[i-6]);
+
         return filteredList;
-        //until here
     }
 
     public String getAllStatus(){
-
         return this.covidApiService.getAllStatus();
+    }
 
+    public int getAverageCasesInLast7Days(){
+
+        int difference;
+        int average;
+
+        difference = GetLastSevenDays().get(0).getCases() - GetLastSevenDays().get(1).getCases();
+        average = difference / 7;
+
+        return average;
     }
 }
