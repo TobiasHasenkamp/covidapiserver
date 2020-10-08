@@ -32,7 +32,6 @@ class CovidControllerTest {
     @MockBean
     CovidApiService repository;
 
-
     @Test
     public void averageTest(){
         //Given
@@ -50,6 +49,6 @@ class CovidControllerTest {
                 .thenReturn(newCovidApiNewInfections);
 
         //Then
-        assertThat(response.getBody(), is(2030));
+        assertThat(response.getBody(), is(2028));
     }
 }
